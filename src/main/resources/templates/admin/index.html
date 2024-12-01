@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="utf-8">
@@ -36,10 +36,41 @@
   <![endif]-->
 
   <div class="wrapper">
-    <header th:replace="fragments/header :: header">
+    <header>
+      <nav th:replace="~{fragments/_header :: header}"></nav>
     </header>
+
+    <div class="page-wrap">
+      <nav th:replace="~{fragments/_sidebar :: sidebar}"></nav>
+      <div class="main-content">
+        <div class="container-fluid">
+          <div class="row clearfix">
+            <div class="col-lg-3 col-md-6 col-sm-12"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script th:src="@{/libs/popper.js/dist/umd/popper.min.js}"></script>
+  <script th:src="@{/libs/bootstrap/dist/js/bootstrap.min.js}"></script>
+  <script th:src="@{/libs/perfect-scrollbar/dist/perfect-scrollbar.min.js}"></script>
+  <script th:src="@{/libs/screenfull/dist/screenfull.js}"></script>
+  <script th:src="@{/libs/datatables.net/js/jquery.dataTables.min.js}"></script>
+  <script th:src="@{/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js}"></script>
+  <script th:src="@{/libs/datatables.net-responsive/js/dataTables.responsive.min.js}"></script>
+  <script th:src="@{/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js}"></script>
+  <script th:src="@{/libs/jvectormap/jquery-jvectormap.min.js}"></script>
+  <script th:src="@{/libs/jvectormap/tests/assets/jquery-jvectormap-world-mill-en.js}"></script>
+  <script th:src="@{/libs/moment/moment.js}"></script>
+  <script th:src="@{/libs/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js}"></script>
+  <script th:src="@{/libs/d3/dist/d3.min.js}"></script>
+  <script th:src="@{/libs/c3/c3.min.js}"></script>
+  <script th:src="@{/js/tables.js}"></script>
+  <script th:src="@{/js/widgets.js}"></script>
+  <script th:src="@{/js/charts.js}"></script>
+  <script th:src="@{/js/theme.min.js}"></script>
 </body>
 
 </html>
