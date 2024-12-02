@@ -1,6 +1,9 @@
 package com.jotahdev.ediaristas.core.controllers;
 
 import com.jotahdev.ediaristas.core.models.CleaningService;
+
+import java.time.Year;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,8 +24,11 @@ public class CleaningServiceController {
 
     @GetMapping("/cadastrar")
     public String showCreateForm(Model model) {
+        int currentYear = Year.now().getValue();
         model.addAttribute("service", new CleaningService());
-        model.addAttribute("title", "Cadastrar");
+        model.addAttribute("title", "Cadastrar novo Serviço");
+        model.addAttribute("currentYear", currentYear);
+        System.out.println("Ano Atual: " + currentYear);
         return "services/cadastrar";
     }
 
