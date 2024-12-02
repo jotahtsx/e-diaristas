@@ -20,13 +20,14 @@ public class CleaningServiceController {
     }
 
     @GetMapping("/cadastrar")
-    public String showCadastroForm(Model model) {
+    public String showCreateForm(Model model) {
         model.addAttribute("service", new CleaningService());
+        model.addAttribute("title", "Cadastrar");
         return "services/cadastrar";
     }
 
     @PostMapping("/cadastrar")
-    public String cadastrarService(CleaningService cleaningService) {
+    public String storeService(CleaningService cleaningService) {
         System.out.println(cleaningService);
         return "redirect:/admin/servicos";
     }

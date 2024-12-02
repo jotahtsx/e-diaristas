@@ -1,56 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Serviço de Limpeza</title>
-</head>
+
+<!-- Incluindo o fragmento do head -->
+<th:block th:replace="fragments/head :: head"></th:block>
+
 <body>
-    <h1>Cadastrar Novo Serviço de Limpeza</h1>
-
-    <form action="/servicos/cadastrar" method="post">
-        <!-- Nome do Serviço -->
-        <label for="name">Nome do Serviço:</label>
-        <input type="text" id="name" name="name" required>
-        <br><br>
-
-        <!-- Preço Mínimo -->
-        <label for="minimumPrice">Preço Mínimo:</label>
-        <input type="number" id="minimumPrice" name="minimumPrice" step="0.01" required>
-        <br><br>
-
-        <!-- Quantidade de Horas -->
-        <label for="quantityOfHours">Quantidade de Horas:</label>
-        <input type="number" id="quantityOfHours" name="quantityOfHours" required>
-        <br><br>
-
-        <!-- Porcentagem da Comissão -->
-        <label for="commissionPercentage">Porcentagem de Comissão:</label>
-        <input type="number" id="commissionPercentage" name="commissionPercentage" step="0.01" required>
-        <br><br>
-
-        <!-- Horas por Quarto -->
-        <label for="roomHours">Horas por Quarto:</label>
-        <input type="number" id="roomHours" name="roomHours" required>
-        <br><br>
-
-        <!-- Valor por Quarto -->
-        <label for="roomPrice">Valor por Quarto:</label>
-        <input type="number" id="roomPrice" name="roomPrice" step="0.01" required>
-        <br><br>
-
-        <!-- Ícone (Opcional) -->
-        <label for="icon">Ícone:</label>
-        <select id="icon" name="icon">
-            <option value="LIVING_ROOM">Sala</option>
-            <option value="KITCHEN">Cozinha</option>
-            <option value="BATHROOM">Banheiro</option>
-            <option value="YARD">Quintal</option>
-            <option value="OTHER">Outros</option>
-        </select>
-        <br><br>
-
-        <button type="submit">Cadastrar Serviço</button>
-    </form>
+  <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+  <div class="wrapper">
+    <th:block th:replace="fragments/header:: header"></th:block>
+    <div class="page-wrap">
+      <th:block th:replace="fragments/sidebar:: sidebar"></th:block>
+      <div class="main-content">
+        teste
+      </div>
+      <th:block th:replace="fragments/footer:: footer"></th:block>
+    </div>
+    <div>
+      <th:block th:replace="fragments/scripts :: scripts"></th:block>
+    </div>
 </body>
+
 </html>
