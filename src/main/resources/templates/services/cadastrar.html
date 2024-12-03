@@ -14,46 +14,108 @@
       <th:block th:replace="fragments/sidebar:: sidebar"></th:block>
       <div class="main-content">
 
-        <div class="card">
-        <div class="card-header">
-          <h3>Novo serviço</h3>
+        <div class="card mb-0 pb-0">
+          <div class="card-header">
+            <h3>Novo serviço</h3>
+          </div>
+          <div class="card-body">
+            <form method="post" th:object="${service}" class="forms-sample">
+              <div class="form-group row">
+                <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
+                  <label for="name">Serviço:</label>
+                  <input type="text" class="form-control form-control-lg" placeholder="Título do serviço"
+                    th:field="*{name}">
+                </div>
+                <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
+                  <label for="minimumPrice">Valor mínimo:</label>
+                  <input type="number" class="form-control form-control-lg" th:field="*{minimumPrice}">
+                </div>
+                <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
+                  <label for="quantityOfHours">Quantidade de horas:</label>
+                  <input type="number" class="form-control form-control-lg" th:field="*{quantityOfHours}">
+                </div>
+                <div class="col-md-12 col-lg-3 col-sm-12">
+                  <label for="commissionPercentage">Porcentagem por comissão:</label>
+                  <input type="number" class="form-control form-control-lg" th:field="*{commissionPercentage}">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
+                  <label for="roomHours">Horas por quarto:</label>
+                  <input type="number" class="form-control form-control-lg" th:field="*{roomHours}">
+                </div>
+                <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
+                  <label for="roomPrice">Valor por quarto:</label>
+                  <input type="number" class="form-control form-control-lg" th:field="*{roomPrice}">
+                </div>
+                <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
+                  <label for="livingAreaHours">Horas por sala:</label>
+                  <input type="number" class="form-control form-control-lg" th:field="*{livingAreaHours}">
+                </div>
+                <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
+                  <label for="livingAreaPrice">Valor por sala:</label>
+                  <input type="number" class="form-control form-control-lg" th:field="*{livingAreaPrice}">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
+                  <label for="bathroomHours">Horas por banheiro:</label>
+                  <input type="number" class="form-control form-control-lg" th:field="*{bathroomHours}">
+                </div>
+                <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
+                  <label for="bathroomPrice">Valor por banheiro:</label>
+                  <input type="number" class="form-control form-control-lg" th:field="*{bathroomPrice}">
+                </div>
+                <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
+                  <label for="kitchenHours">Horas por cozinha:</label>
+                  <input type="number" class="form-control form-control-lg" th:field="*{kitchenHours}">
+                </div>
+                <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
+                  <label for="kitchenPrice">Valor por cozinha:</label>
+                  <input type="number" class="form-control form-control-lg" th:field="*{kitchenPrice}">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
+                  <label for="yardHours">Horas por quintal:</label>
+                  <input type="number" class="form-control form-control-lg" th:field="*{yardHours}">
+                </div>
+                <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
+                  <label for="yardPrice">Valor por quintal:</label>
+                  <input type="number" class="form-control form-control-lg" th:field="*{yardPrice}">
+                </div>
+                <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
+                  <label for="othersHours">Horas por outros serviços:</label>
+                  <input type="number" class="form-control form-control-lg" th:field="*{othersHours}">
+                </div>
+                <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
+                  <label for="othersPrice">Valor por outros serviços:</label>
+                  <input type="number" class="form-control form-control-lg" th:field="*{othersPrice}">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
+                  <label for="icon">Ícone</label>
+                  <select class="form-control" th:field="*{icon}">
+                    <option th:each="icon : ${icons}" th:text="${icon.name}" th:value="${icon}"></option>
+                  </select>
+                </div>
+                <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
+                  <label for="position">Posição</label>
+                  <input type="number" class="form-control form-control-lg" th:field="*{position}">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary mr-2">Salvar</button>
+            </form>
+          </div>
         </div>
-        <div class="card-body">
-          <form class="forms-sample">
-            <div class="form-group">
-              <label for="exampleInputUsername1">Username</label>
-              <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Username">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputConfirmPassword1">Confirm Password</label>
-              <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password">
-            </div>
-            <div class="form-group">
-              <label class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input">
-                <span class="custom-control-label">&nbsp;Remember me</span>
-              </label>
-            </div>
-            <button type="submit" class="btn btn-primary mr-2">Submit</button>
-            <button class="btn btn-light">Cancel</button>
-          </form>
-        </div>
-      </div>
 
+      </div>
+      <th:block th:replace="fragments/footer:: footer"></th:block>
     </div>
-    <th:block th:replace="fragments/footer:: footer"></th:block>
-  </div>
-  <div>
-    <th:block th:replace="fragments/scripts :: scripts"></th:block>
-  </div>
+    <div>
+      <th:block th:replace="fragments/scripts :: scripts"></th:block>
+    </div>
 </body>
 
 </html>

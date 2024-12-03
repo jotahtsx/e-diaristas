@@ -1,5 +1,6 @@
 package com.jotahdev.ediaristas.core.controllers;
 
+import com.jotahdev.ediaristas.core.enums.Icon;
 import com.jotahdev.ediaristas.core.models.CleaningService;
 
 import java.time.Year;
@@ -7,6 +8,7 @@ import java.time.Year;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -30,6 +32,11 @@ public class CleaningServiceController {
         model.addAttribute("currentYear", currentYear);
         System.out.println("Ano Atual: " + currentYear);
         return "services/cadastrar";
+    }
+
+    @ModelAttribute("icons")
+    public Icon[] getIcons() {
+      return Icon.values();
     }
 
     @PostMapping("/cadastrar")
