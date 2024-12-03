@@ -2,9 +2,11 @@ package com.jotahdev.ediaristas.core.controllers;
 
 import com.jotahdev.ediaristas.core.enums.Icon;
 import com.jotahdev.ediaristas.core.models.CleaningService;
+import com.jotahdev.ediaristas.core.repositories.CleaningServiceRepository;
 
 import java.time.Year;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/admin/servicos")
 public class CleaningServiceController {
+
+    @Autowired
+    private CleaningServiceRepository repository;
 
     @GetMapping("/")
     public String home(Model model) {
@@ -30,18 +35,18 @@ public class CleaningServiceController {
         model.addAttribute("service", new CleaningService());
         model.addAttribute("title", "Cadastrar novo Serviço");
         model.addAttribute("currentYear", currentYear);
-        System.out.println("Ano Atual: " + currentYear);
         return "services/cadastrar";
+    }
+
+    @PostMapping("/cadastrar")
+    public String create(CleaningService cleaningService) {
+      repository.save(cleaningService);
+
+      return "redirect:/admin/servicos/cadastrar";
     }
 
     @ModelAttribute("icons")
     public Icon[] getIcons() {
       return Icon.values();
-    }
-
-    @PostMapping("/cadastrar")
-    public String storeService(CleaningService cleaningService) {
-        System.out.println(cleaningService);
-        return "redirect:/admin/servicos";
     }
 }
