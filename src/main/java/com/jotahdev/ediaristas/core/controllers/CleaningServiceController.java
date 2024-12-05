@@ -55,18 +55,25 @@ public class CleaningServiceController {
 
   @GetMapping("/{id}/editar")
   public String showEditForm(@PathVariable Long id, Model model, HttpServletRequest request) {
-      int currentYear = Year.now().getValue();
-      CleaningService service = repository.findById(id)
-          .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Serviço não encontrado"));
-      model.addAttribute("service", service);
-      model.addAttribute("title", "Editar Serviço");
-      model.addAttribute("buttonAction", "edit");
-      model.addAttribute("currentYear", currentYear);
-      model.addAttribute("currentUrl", request.getRequestURI()); // Adiciona a URL atual
-  
-      return "services/form";
+    int currentYear = Year.now().getValue();
+    CleaningService service = repository.findById(id)
+        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Serviço não encontrado"));
+    model.addAttribute("service", service);
+    model.addAttribute("title", "Editar Serviço");
+    model.addAttribute("buttonAction", "edit");
+    model.addAttribute("currentYear", currentYear);
+    model.addAttribute("currentUrl", request.getRequestURI()); // Adiciona a URL atual
+
+    return "services/form";
   }
-  
+
+  @PostMapping("/{id}/editar")
+  public String editar(@PathVariable Long id, CleaningService service) {
+    repository.save(service);
+
+    return "redirect:/admin/servicos";
+  }
+
   @GetMapping("/{id}/excluir")
   public String delete(@PathVariable Long id) {
     repository.deleteById(id);
