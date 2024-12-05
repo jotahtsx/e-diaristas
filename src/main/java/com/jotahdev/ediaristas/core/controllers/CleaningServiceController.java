@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.time.Year;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.server.ResponseStatusException;
 
 @Controller
 @RequestMapping("/admin/servicos")
@@ -37,10 +39,11 @@ public class CleaningServiceController {
   public String showCreateForm(Model model, HttpServletRequest request) {
     int currentYear = Year.now().getValue();
     model.addAttribute("service", new CleaningService());
-    model.addAttribute("title", "Cadastrar novo Serviço");
+    model.addAttribute("title", "Novo Serviço");
+    model.addAttribute("buttonAction", "create");
     model.addAttribute("currentYear", currentYear);
     model.addAttribute("currentUrl", request.getRequestURI()); // Adiciona a URL atual
-    return "services/cadastrar";
+    return "services/form";
   }
 
   @PostMapping("/cadastrar")
@@ -50,11 +53,25 @@ public class CleaningServiceController {
     return "redirect:/admin/servicos";
   }
 
+  @GetMapping("/{id}/editar")
+  public String showEditForm(@PathVariable Long id, Model model, HttpServletRequest request) {
+      int currentYear = Year.now().getValue();
+      CleaningService service = repository.findById(id)
+          .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Serviço não encontrado"));
+      model.addAttribute("service", service);
+      model.addAttribute("title", "Editar Serviço");
+      model.addAttribute("buttonAction", "edit");
+      model.addAttribute("currentYear", currentYear);
+      model.addAttribute("currentUrl", request.getRequestURI()); // Adiciona a URL atual
+  
+      return "services/form";
+  }
+  
   @GetMapping("/{id}/excluir")
   public String delete(@PathVariable Long id) {
-      repository.deleteById(id);
-      return "redirect:/admin/servicos";
-  }  
+    repository.deleteById(id);
+    return "redirect:/admin/servicos";
+  }
 
   @ModelAttribute("icons")
   public Icon[] getIcons() {
