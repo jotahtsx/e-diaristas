@@ -46,7 +46,7 @@ public class CleaningServiceController {
   public String create(CleaningService cleaningService) {
     repository.save(cleaningService);
 
-    return "redirect:/admin/servicos/cadastrar";
+    return "redirect:/admin/servicos";
   }
 
   @ModelAttribute("icons")
