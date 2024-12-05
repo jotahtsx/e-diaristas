@@ -15,7 +15,7 @@ public class HomeAdminController {
   public String dashboard(Model model, HttpServletRequest request) {
     String currentUrl = request.getRequestURI(); // Obtém a URL atual
     model.addAttribute("currentUrl", currentUrl);
-    model.addAttribute("title", "Dashboard Admin");
+    model.addAttribute("title", "Visão Geral");
     return "admin/home";
   }
 }
