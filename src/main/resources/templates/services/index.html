@@ -33,7 +33,7 @@
                   <td th:text="${service.minimumPrice}"></td>
                   <td>
                     <div class="table-actions">
-                      <a><i class="ik ik-edit-2"></i></a>
+                      <a th:href="@{/admin/servicos/{id}/editar(id=${service.id})}"><i class="ik ik-edit-2"></i></a>
                       <a th:href="@{/admin/servicos/{id}/excluir(id=${service.id})}"
                       onclick="return confirm('Tem certeza de que deseja excluir este serviço? Esta ação é irreversível e os dados não poderão ser recuperados.')">
                         <i class="ik ik-trash-2"></i>
