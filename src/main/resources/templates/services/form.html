@@ -28,13 +28,15 @@
                 </div>
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
                   <label for="minimumPrice">Valor mínimo:</label>
-                  <input type="number" class="form-control form-control-lg" th:field="*{minimumPrice}">
+                  <input type="number" class="form-control form-control-lg" th:field="*{minimumPrice}" 
+                  aria-describedby="minimumPriceHelp">
+                  <small id="minimumPriceHelp" class="form-text text-muted">Defina o valor mínimo para o serviço.</small>
                 </div>
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
                   <label for="quantityOfHours">Quantidade de horas:</label>
                   <input type="number" class="form-control form-control-lg" th:field="*{quantityOfHours}">
                 </div>
-                <div class="col-md-12 col-lg-3 col-sm-12">
+                <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
                   <label for="commissionPercentage">Porcentagem por comissão:</label>
                   <input type="number" class="form-control form-control-lg" th:field="*{commissionPercentage}">
                 </div>

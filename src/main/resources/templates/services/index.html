@@ -12,37 +12,37 @@
     <div class="page-wrap">
       <th:block th:replace="fragments/sidebar:: sidebar"></th:block>
       <div class="main-content">
-        <div class="card mb-0 pb-0">
+        <div class="card">
           <div class="card-header">
             <h3>Serviços</h3>
           </div>
-          <div class="card-body p-0 table-border-style">
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Serviço</th>
-                    <th>Valor Mínimo</th>
-                    <th>Ações</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr th:each="service : ${services}">
-                    <th scope="row" th:text="${service.id}"></th>
-                    <td th:text="${service.name}"></td>
-                    <td th:text="${service.minimumPrice}"></td>
-                    <td width="180">
-                      <a class="btn btn-sm btn-warning">Editar</a>
-                      <a 
-                      th:href="@{/admin/servicos/{id}/excluir(id=${service.id})}" 
-                      class="btn btn-sm btn-danger"
-                      onclick="return confirm('Tem certeza de que deseja excluir este serviço? Esta ação é irreversível e os dados não poderão ser recuperados.')">Excluir</a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+          <div class="card-body">
+            <table id="serviceTable" class="table">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Serviço</th>
+                  <th>Valor Mínimo</th>
+                  <th class="nosort">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="service : ${services}">
+                  <td th:text="${service.id}"></td>
+                  <td th:text="${service.name}"></td>
+                  <td th:text="${service.minimumPrice}"></td>
+                  <td>
+                    <div class="table-actions">
+                      <a><i class="ik ik-edit-2"></i></a>
+                      <a th:href="@{/admin/servicos/{id}/excluir(id=${service.id})}"
+                      onclick="return confirm('Tem certeza de que deseja excluir este serviço? Esta ação é irreversível e os dados não poderão ser recuperados.')">
+                        <i class="ik ik-trash-2"></i>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
