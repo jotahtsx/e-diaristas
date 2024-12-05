@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<th:block th:replace="fragments/head :: head"></th:block>
+
+<body>
+  <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+  <div class="wrapper">
+    <th:block th:replace="fragments/header:: header"></th:block>
+    <div class="page-wrap">
+      <th:block th:replace="fragments/sidebar:: sidebar"></th:block>
+      <div class="main-content">
+        <div class="card mb-0 pb-0">
+          <div class="card-header">
+            <h3>Serviços</h3>
+          </div>
+          <div class="card-body p-0 table-border-style">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Serviço</th>
+                    <th>Valor Mínimo</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="service : ${services}">
+                    <th scope="row" th:text="${service.id}"></th>
+                    <td th:text="${service.name}"></td>
+                    <td th:text="${service.minimumPrice}"></td>
+                    <td width="180">
+                      <a class="btn btn-sm btn-warning">Editar</a>
+                      <a class="btn btn-sm btn-danger">Excluir</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <th:block th:replace="fragments/footer:: footer"></th:block>
+    </div>
+  </div>
+  <div>
+    <th:block th:replace="fragments/scripts :: scripts"></th:block>
+  </div>
+</body>
+
+</html>

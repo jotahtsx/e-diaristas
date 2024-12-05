@@ -4,6 +4,8 @@ import com.jotahdev.ediaristas.core.enums.Icon;
 import com.jotahdev.ediaristas.core.models.CleaningService;
 import com.jotahdev.ediaristas.core.repositories.CleaningServiceRepository;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 import java.time.Year;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,35 +20,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin/servicos")
 public class CleaningServiceController {
 
-    @Autowired
-    private CleaningServiceRepository repository;
+  @Autowired
+  private CleaningServiceRepository repository;
 
-    @GetMapping("/")
-    public String home(Model model) {
-        model.addAttribute("totalServices", 120);
-        model.addAttribute("totalRevenue", 5000.00);
-        model.addAttribute("totalCleaners", 45);
-        return "home";
-    }
+  @GetMapping(value = { "/", "" })
+  public String listAll(Model model, HttpServletRequest request) {
+    model.addAttribute("title", "Serviços");
+    model.addAttribute("services", repository.findAll());
+    model.addAttribute("currentUrl", request.getRequestURI());
 
-    @GetMapping("/cadastrar")
-    public String showCreateForm(Model model) {
-        int currentYear = Year.now().getValue();
-        model.addAttribute("service", new CleaningService());
-        model.addAttribute("title", "Cadastrar novo Serviço");
-        model.addAttribute("currentYear", currentYear);
-        return "services/cadastrar";
-    }
+    return "services/index";
+  }
 
-    @PostMapping("/cadastrar")
-    public String create(CleaningService cleaningService) {
-      repository.save(cleaningService);
+  @GetMapping(value = { "/cadastrar", "/cadastrar/" })
+  public String showCreateForm(Model model, HttpServletRequest request) {
+    int currentYear = Year.now().getValue();
+    model.addAttribute("service", new CleaningService());
+    model.addAttribute("title", "Cadastrar novo Serviço");
+    model.addAttribute("currentYear", currentYear);
+    model.addAttribute("currentUrl", request.getRequestURI()); // Adiciona a URL atual
+    return "services/cadastrar";
+  }
 
-      return "redirect:/admin/servicos/cadastrar";
-    }
+  @PostMapping("/cadastrar")
+  public String create(CleaningService cleaningService) {
+    repository.save(cleaningService);
 
-    @ModelAttribute("icons")
-    public Icon[] getIcons() {
-      return Icon.values();
-    }
+    return "redirect:/admin/servicos/cadastrar";
+  }
+
+  @ModelAttribute("icons")
+  public Icon[] getIcons() {
+    return Icon.values();
+  }
 }
