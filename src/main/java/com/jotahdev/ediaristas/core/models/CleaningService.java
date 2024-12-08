@@ -35,49 +35,49 @@ public class CleaningService {
   private Long id;
 
   @Column(length = 50, nullable = false)
-  private String name; // nome
+  private String name;
 
   @Column(name = "minimum_price", nullable = false)
-  private BigDecimal minimumPrice; // Valor Mínimo
+  private BigDecimal minimumPrice;
   @Column(name = "quantity_of_hours", nullable = false)
-  private Integer quantityOfHours; // Quantidade de Horas
+  private Integer quantityOfHours;
+
   @Column(name = "comission_per_percentage", nullable = false)
-  private BigDecimal commissionPercentage; // Porcentagem por Comissão
-
+  private BigDecimal commissionPercentage;
   @Column(name = "room_hours", nullable = false)
-  private Integer roomHours; // Horas por Quarto
+  private Integer roomHours;
+
   @Column(name = "room_price", nullable = false)
-  private BigDecimal roomPrice; // Valor por Quarto
-
+  private BigDecimal roomPrice;
   @Column(name = "living_area_hours", nullable = false)
-  private Integer livingAreaHours; // Horas por Sala
-  @Column(name = "living_area_price", nullable = false)
-  private BigDecimal livingAreaPrice; // Valor por Sala
+  private Integer livingAreaHours;
 
+  @Column(name = "living_area_price", nullable = false)
+  private BigDecimal livingAreaPrice;
   @Column(name = "bathroom_hours", nullable = false)
-  private Integer bathroomHours; // Horas por Banheiro
+  private Integer bathroomHours;
   @Column(name = "bathroom_price", nullable = false)
-  private BigDecimal bathroomPrice; // Valor por Banheiro
+  private BigDecimal bathroomPrice;
 
   @Column(name = "kitchen_hours", nullable = false)
-  private Integer kitchenHours; // Horas por Cozinha
+  private Integer kitchenHours;
   @Column(name = "kitchen_price", nullable = false)
-  private BigDecimal kitchenPrice; // Valor por Cozinha
+  private BigDecimal kitchenPrice;
 
   @Column(name = "yard_hours", nullable = false)
-  private Integer yardHours; // Horas por Quintal
+  private Integer yardHours;
   @Column(name = "yard_price", nullable = false)
-  private BigDecimal yardPrice; // Valor por Quintal
+  private BigDecimal yardPrice;
 
   @Column(name = "others_hours", nullable = false)
-  private Integer othersHours; // Horas por Outros
+  private Integer othersHours;
   @Column(name = "others_price", nullable = false)
-  private BigDecimal othersPrice; // Valor por Outros
+  private BigDecimal othersPrice;
 
   @Column(nullable = false, length = 14)
   @Enumerated(EnumType.STRING)
-  private Icon icon; // Ícones do serviço
+  private Icon icon;
 
   @Column(nullable = false)
-  private Integer position; // Posição do serviço
+  private Integer position;
 }
