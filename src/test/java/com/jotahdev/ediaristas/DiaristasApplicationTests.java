@@ -1,10 +1,10 @@
-package com.jotahdev.e_diaristas;
+package com.jotahdev.ediaristas;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EDiaristasApplicationTests {
+class DiaristasApplicationTests {
 
 	@Test
 	void contextLoads() {
