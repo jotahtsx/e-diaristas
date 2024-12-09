@@ -44,16 +44,17 @@ public class CleaningService {
 
   @Column(name = "comission_per_percentage", nullable = false)
   private BigDecimal commissionPercentage;
+
   @Column(name = "room_hours", nullable = false)
   private Integer roomHours;
-
   @Column(name = "room_price", nullable = false)
   private BigDecimal roomPrice;
+  
   @Column(name = "living_area_hours", nullable = false)
   private Integer livingAreaHours;
-
   @Column(name = "living_area_price", nullable = false)
   private BigDecimal livingAreaPrice;
+
   @Column(name = "bathroom_hours", nullable = false)
   private Integer bathroomHours;
   @Column(name = "bathroom_price", nullable = false)

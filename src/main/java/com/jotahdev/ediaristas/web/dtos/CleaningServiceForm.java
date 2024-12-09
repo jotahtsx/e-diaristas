@@ -37,7 +37,15 @@ public class CleaningServiceForm {
 
   @NotNull
   @PositiveOrZero
+  private BigDecimal roomHours;
+
+  @NotNull
+  @PositiveOrZero
   private BigDecimal roomPrice;
+
+  @NotNull
+  @PositiveOrZero
+  private BigDecimal livingAreaHours;
 
   @NotNull
   @PositiveOrZero
@@ -45,7 +53,15 @@ public class CleaningServiceForm {
 
   @NotNull
   @PositiveOrZero
+  private BigDecimal bathroomHours;
+
+  @NotNull
+  @PositiveOrZero
   private BigDecimal bathroomPrice;
+
+  @NotNull
+  @PositiveOrZero
+  private BigDecimal kitchenHours;
 
   @NotNull
   @PositiveOrZero
@@ -53,7 +69,15 @@ public class CleaningServiceForm {
 
   @NotNull
   @PositiveOrZero
+  private BigDecimal yardHours;
+
+  @NotNull
+  @PositiveOrZero
   private BigDecimal yardPrice;
+
+  @NotNull
+  @PositiveOrZero
+  private BigDecimal othersHours;
 
   @NotNull
   @PositiveOrZero
