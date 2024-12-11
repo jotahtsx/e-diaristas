@@ -26,8 +26,7 @@
                   <input type="text" id="name" th:field="*{name}" class="form-control form-control-lg"
                     th:classappend="${#fields.hasErrors('name') ? 'is-invalid' : ''}">
                   <div th:if="${#fields.hasErrors('name')}" class="invalid-feedback">
-                    <p class="pb-0 mb-0" th:each="err : ${#fields.errors('name')}" th:text="${err}"
-                      style="font-weight: bold;"></p>
+                    <p class="pb-0 mb-0 font-weight-bold" th:each="err : ${#fields.errors('name')}" th:text="${err}"></p>
                   </div>
                 </div>
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
@@ -36,71 +35,130 @@
                     th:classappend="${#fields.hasErrors('minimumPrice') ? 'is-invalid' : ''}"
                     aria-describedby="minimumPriceHelp">
                   <div th:if="${#fields.hasErrors('minimumPrice')}" class="invalid-feedback">
-                    <p class="pb-0 mb-0" th:each="err : ${#fields.errors('minimumPrice')}" th:text="${err}"
-                      style="font-weight: bold;"></p>
+                    <p class="pb-0 mb-0 font-weight-bold" th:each="err : ${#fields.errors('minimumPrice')}" th:text="${err}"></p>
                   </div>
                 </div>
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
                   <label for="quantityOfHours">Quantidade de horas:</label>
-                  <input type="number" class="form-control form-control-lg" th:field="*{quantityOfHours}">
+                  <input type="number" class="form-control form-control-lg" th:field="*{quantityOfHours}"
+                    th:classappend="${#fields.hasErrors('quantityOfHours') ? 'is-invalid' : ''}"
+                    aria-describedby="quantityOfHoursHelp">
+                  <div th:if="${#fields.hasErrors('quantityOfHours')}" class="invalid-feedback">
+                    <p class="pb-0 mb-0 font-weight-bold" th:each="err : ${#fields.errors('quantityOfHours')}" th:text="${err}"></p>
+                  </div>
                 </div>
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
                   <label for="commissionPercentage">Porcentagem por comissão:</label>
-                  <input type="number" class="form-control form-control-lg" th:field="*{commissionPercentage}">
+                  <input type="number" class="form-control form-control-lg" th:field="*{commissionPercentage}"
+                    th:classappend="${#fields.hasErrors('commissionPercentage') ? 'is-invalid' : ''}"
+                    aria-describedby="commissionPercentageHelp">
+                  <div th:if="${#fields.hasErrors('commissionPercentage')}" class="invalid-feedback">
+                    <p class="pb-0 mb-0 font-weight-bold" th:each="err : ${#fields.errors('commissionPercentage')}" th:text="${err}"></p>
+                  </div>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
                   <label for="roomHours">Horas por quarto:</label>
-                  <input type="number" class="form-control form-control-lg" th:field="*{roomHours}">
+                  <input type="number" class="form-control form-control-lg" th:field="*{roomHours}"
+                    th:classappend="${#fields.hasErrors('roomHours') ? 'is-invalid' : ''}"
+                    aria-describedby="roomHoursHelp">
+                  <div th:if="${#fields.hasErrors('roomHours')}" class="invalid-feedback">
+                    <p class="pb-0 mb-0 font-weight-bold" th:each="err : ${#fields.errors('roomHours')}" th:text="${err}"></p>
+                  </div>
                 </div>
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
                   <label for="roomPrice">Valor por quarto:</label>
-                  <input type="number" class="form-control form-control-lg" th:field="*{roomPrice}">
+                  <input type="number" class="form-control form-control-lg" th:field="*{roomPrice}" 
+                         th:classappend="${#fields.hasErrors('roomPrice') ? 'is-invalid' : ''}">
+                  <div th:if="${#fields.hasErrors('roomPrice')}" class="invalid-feedback">
+                    <p class="pb-0 mb-0 font-weight-bold" th:each="err : ${#fields.errors('roomPrice')}" th:text="${err}"></p>
+                  </div>
                 </div>
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
-                  <label for="livingAreaHours">Horas por sala:</label>
-                  <input type="number" class="form-control form-control-lg" th:field="*{livingAreaHours}">
+                  <label for="livingAreaHours">Horas por sala</label>
+                  <input type="number" class="form-control form-control-lg" th:field="*{livingAreaHours}" 
+                         th:classappend="${#fields.hasErrors('livingAreaHours') ? 'is-invalid' : ''}">
+                  <div th:if="${#fields.hasErrors('livingAreaHours')}" class="invalid-feedback">
+                    <p class="pb-0 mb-0 font-weight-bold" th:each="err : ${#fields.errors('livingAreaHours')}" th:text="${err}"></p>
+                  </div>
                 </div>
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
                   <label for="livingAreaPrice">Valor por sala:</label>
-                  <input type="number" class="form-control form-control-lg" th:field="*{livingAreaPrice}">
+                  <input type="number" class="form-control form-control-lg" th:field="*{livingAreaPrice}"
+                         th:classappend="${#fields.hasErrors('livingAreaPrice') ? 'is-invalid' : ''}">
+                  <div th:if="${#fields.hasErrors('livingAreaPrice')}" class="invalid-feedback">
+                    <p class="pb-0 mb-0 font-weight-bold" th:each="err : ${#fields.errors('livingAreaPrice')}" th:text="${err}"></p>
+                  </div>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
                   <label for="bathroomHours">Horas por banheiro:</label>
-                  <input type="number" class="form-control form-control-lg" th:field="*{bathroomHours}">
+                  <input type="number" class="form-control form-control-lg" th:field="*{bathroomHours}"
+                         th:classappend="${#fields.hasErrors('bathroomHours') ? 'is-invalid' : ''}">
+                  <div th:if="${#fields.hasErrors('bathroomHours')}" class="invalid-feedback">
+                    <p class="pb-0 mb-0 font-weight-bold" th:each="err : ${#fields.errors('bathroomHours')}" th:text="${err}"></p>
+                  </div>
                 </div>
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
-                  <label for="bathroomPrice">Valor por banheiro:</label>
-                  <input type="number" class="form-control form-control-lg" th:field="*{bathroomPrice}">
+                  <label for="bathroomPrice">Valor do banheiro:</label>
+                  <input type="number" class="form-control form-control-lg" th:field="*{bathroomPrice}"
+                         th:classappend="${#fields.hasErrors('bathroomPrice') ? 'is-invalid' : ''}">
+                  <div th:if="${#fields.hasErrors('bathroomPrice')}" class="invalid-feedback">
+                    <p class="pb-0 mb-0 font-weight-bold" th:each="err : ${#fields.errors('bathroomPrice')}" th:text="${err}"></p>
+                  </div>
                 </div>
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
                   <label for="kitchenHours">Horas por cozinha:</label>
-                  <input type="number" class="form-control form-control-lg" th:field="*{kitchenHours}">
+                  <input type="number" class="form-control form-control-lg" th:field="*{kitchenHours}"
+                         th:classappend="${#fields.hasErrors('kitchenHours') ? 'is-invalid' : ''}">
+                  <div th:if="${#fields.hasErrors('kitchenHours')}" class="invalid-feedback">
+                    <p class="pb-0 mb-0 font-weight-bold" th:each="err : ${#fields.errors('kitchenHours')}" th:text="${err}"></p>
+                  </div>
                 </div>
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
-                  <label for="kitchenPrice">Valor por cozinha:</label>
-                  <input type="number" class="form-control form-control-lg" th:field="*{kitchenPrice}">
+                  <label for="kitchenPrice">Valor da cozinha:</label>
+                  <input type="number" class="form-control form-control-lg" th:field="*{kitchenPrice}"
+                         th:classappend="${#fields.hasErrors('kitchenPrice') ? 'is-invalid' : ''}">
+                  <div th:if="${#fields.hasErrors('kitchenPrice')}" class="invalid-feedback">
+                    <p class="pb-0 mb-0 font-weight-bold" th:each="err : ${#fields.errors('kitchenPrice')}" th:text="${err}"></p>
+                  </div>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
                   <label for="yardHours">Horas por quintal:</label>
-                  <input type="number" class="form-control form-control-lg" th:field="*{yardHours}">
+                  <input type="number" class="form-control form-control-lg" th:field="*{yardHours}"
+                         th:classappend="${#fields.hasErrors('yardHours') ? 'is-invalid' : ''}">
+                  <div th:if="${#fields.hasErrors('yardHours')}" class="invalid-feedback">
+                    <p class="pb-0 mb-0 font-weight-bold" th:each="err : ${#fields.errors('yardHours')}" th:text="${err}"></p>
+                  </div>
+                </div>
+                
+                <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
+                  <label for="yardPrice">Valor do quintal:</label>
+                  <input type="number" class="form-control form-control-lg" th:field="*{yardPrice}"
+                         th:classappend="${#fields.hasErrors('yardPrice') ? 'is-invalid' : ''}">
+                  <div th:if="${#fields.hasErrors('yardPrice')}" class="invalid-feedback">
+                    <p class="pb-0 mb-0 font-weight-bold" th:each="err : ${#fields.errors('yardPrice')}" th:text="${err}"></p>
+                  </div>
                 </div>
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
-                  <label for="yardPrice">Valor por quintal:</label>
-                  <input type="number" class="form-control form-control-lg" th:field="*{yardPrice}">
-                </div>
+                  <label for="othersHours">Horas (Outros):</label>
+                  <input type="number" class="form-control form-control-lg" th:field="*{othersHours}"
+                         th:classappend="${#fields.hasErrors('othersHours') ? 'is-invalid' : ''}">
+                  <div th:if="${#fields.hasErrors('othersHours')}" class="invalid-feedback">
+                    <p class="pb-0 mb-0 font-weight-bold" th:each="err : ${#fields.errors('othersHours')}" th:text="${err}"></p>
+                  </div>
+                </div>     
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
-                  <label for="othersHours">Horas por outros serviços:</label>
-                  <input type="number" class="form-control form-control-lg" th:field="*{othersHours}">
-                </div>
-                <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
-                  <label for="othersPrice">Valor por outros serviços:</label>
-                  <input type="number" class="form-control form-control-lg" th:field="*{othersPrice}">
+                  <label for="othersPrice">Valor (Outros):</label>
+                  <input type="number" class="form-control form-control-lg" th:field="*{othersPrice}"
+                         th:classappend="${#fields.hasErrors('othersPrice') ? 'is-invalid' : ''}">
+                  <div th:if="${#fields.hasErrors('othersPrice')}" class="invalid-feedback">
+                    <p class="pb-0 mb-0 font-weight-bold" th:each="err : ${#fields.errors('othersPrice')}" th:text="${err}"></p>
+                  </div>
                 </div>
               </div>
               <div class="form-group row">
