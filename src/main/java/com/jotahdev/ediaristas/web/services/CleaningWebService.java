@@ -15,10 +15,10 @@ import com.jotahdev.ediaristas.web.mappers.WebCleaningServiceMapper;
 public class CleaningWebService {
   
   @Autowired
-  private  CleaningServiceRepository repository;
+  private CleaningServiceRepository repository;
 
   @Autowired
-  WebCleaningServiceMapper mapper;
+  private WebCleaningServiceMapper mapper;
 
   public List<CleaningService> getAll() {
     return repository.findAll();
@@ -26,20 +26,26 @@ public class CleaningWebService {
 
   public CleaningService create(CleaningServiceForm form) {
     var model = mapper.toModel(form);
-
     return repository.save(model);
   }
 
   public CleaningService findServiceById(Long id) {
-    var foundCleaningService = repository.findById(id);
-
-    if(foundCleaningService.isPresent()) {
-      return foundCleaningService.get();
-    }
-
-    var message = String.format("Serviço com o ID %id não encontrado", id);
-    throw new CleaningServiceNotFoundException(message);
-
+    return repository.findById(id)
+      .orElseThrow(() -> new CleaningServiceNotFoundException(
+        String.format("Serviço com o ID %d não encontrado", id)));
   }
 
+  public CleaningService edit(CleaningServiceForm form, Long id) {
+    var foundCleaningService = findServiceById(id);
+
+    var model = mapper.toModel(form);
+    model.setId(foundCleaningService.getId());
+
+    return repository.save(model);
+  }
+
+  public void deleteById(Long id) {
+    var foundCleaningService = findServiceById(id);
+    repository.delete(foundCleaningService);
+  }
 }
