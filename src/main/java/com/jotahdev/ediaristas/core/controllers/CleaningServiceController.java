@@ -44,64 +44,75 @@ public class CleaningServiceController {
 
   @GetMapping(value = { "/cadastrar", "/cadastrar/" })
   public String showCreateForm(Model model, HttpServletRequest request) {
-    int currentYear = Year.now().getValue();
-
     model.addAttribute("serviceForm", new CleaningServiceForm());
     model.addAttribute("title", "Novo Serviço");
     model.addAttribute("buttonAction", "create");
-    model.addAttribute("currentYear", currentYear);
-    model.addAttribute("currentUrl", request.getRequestURI());
+    model.addAttribute("currentUrl", request.getRequestURI()); // Passando a URL atual para o modelo
 
     return "services/form";
   }
 
   @PostMapping("/cadastrar")
-  public String create(@Valid @ModelAttribute("serviceForm") CleaningServiceForm serviceForm) {
-    CleaningService cleaningService = mapper.toModel(serviceForm);
+  public String create(@Valid @ModelAttribute("serviceForm") CleaningServiceForm serviceForm,
+      BindingResult result,
+      Model model,
+      HttpServletRequest request) {
+    if (result.hasErrors()) {
+      model.addAttribute("title", "Novo Serviço");
+      model.addAttribute("currentUrl", request.getRequestURI());
+      return "services/form"; // Retorna ao formulário com erros
+    }
 
+    CleaningService cleaningService = mapper.toModel(serviceForm);
     repository.save(cleaningService);
 
-    return "redirect:/admin/servicos";
+    return "redirect:/admin/servicos"; // Redireciona para a página de serviços após sucesso
   }
 
   @GetMapping("/{id}/editar")
   public String showEditForm(@PathVariable Long id, Model model, HttpServletRequest request) {
       int currentYear = Year.now().getValue();
       CleaningService service = repository.findById(id)
-          .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Serviço não encontrado"));
-
+              .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Serviço não encontrado"));
+  
       CleaningServiceForm serviceForm = mapper.toForm(service);
-
+  
       model.addAttribute("serviceForm", serviceForm);
       model.addAttribute("title", "Editar Serviço");
       model.addAttribute("buttonAction", "edit");
       model.addAttribute("currentYear", currentYear);
       model.addAttribute("currentUrl", request.getRequestURI()); // Adiciona a URL atual
-
+  
       return "services/form";
   }
-
+  
   @PostMapping("/{id}/editar")
   public String update(@PathVariable Long id,
-                       @Valid @ModelAttribute("serviceForm") CleaningServiceForm serviceForm,
-                       BindingResult bindingResult,
-                       Model model) {
-
+          @Valid @ModelAttribute("serviceForm") CleaningServiceForm serviceForm,
+          BindingResult bindingResult,
+          Model model,
+          HttpServletRequest request) {
+  
       if (bindingResult.hasErrors()) {
-          // DEBUG: Loga os erros de validação
+          model.addAttribute("currentUrl", request.getRequestURI());
+          model.addAttribute("serviceForm", serviceForm);
+          model.addAttribute("title", "Editar Serviço");
+          model.addAttribute("buttonAction", "edit");
+  
+          // Log de erros de validação para debug
           bindingResult.getAllErrors().forEach(error -> {
               System.out.println("Erro de validação: " + error.getDefaultMessage());
           });
-
-          // Lança uma exceção para simular o erro de validação no console, como no cadastro
-          throw new IllegalArgumentException("Erros de validação encontrados: " + bindingResult.getAllErrors());
+  
+          return "services/form"; // Retorna o formulário com os erros
       }
-
+  
+      // Se não houver erros, atualiza
       CleaningService service = mapper.toModel(serviceForm);
       service.setId(id);
       repository.save(service);
-
-      return "redirect:/admin/servicos";
+  
+      return "redirect:/admin/servicos"; // Redireciona para a página de serviços após sucesso
   }
 
   @GetMapping("/{id}/excluir")

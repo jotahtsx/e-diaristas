@@ -14,7 +14,7 @@
         <div class="nav-item" th:classappend="${currentUrl == '/admin/' || currentUrl == '/admin' ? 'active' : ''}">
           <a href="/admin"><i class="ik ik-bar-chart-2"></i><span>Visão Geral</span></a>
         </div>
-        <div class="nav-item has-sub" th:classappend="${currentUrl.startsWith('/admin/servicos') ? 'open active' : ''}">
+        <div class="nav-item has-sub" th:classappend="${(currentUrl != null and currentUrl.startsWith('/admin/servicos')) ? 'open active' : ''}">
           <a href="#"><i class="ik ik-package"></i><span>Serviços</span></a>
           <div class="submenu-content">
             <a href="/admin/servicos" class="menu-item"
@@ -27,7 +27,6 @@
             </a>
           </div>
         </div>
-
       </nav>
     </div>
   </div>
