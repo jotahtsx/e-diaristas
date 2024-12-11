@@ -23,15 +23,22 @@
               <div class="form-group row">
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
                   <label for="name">Serviço:</label>
-                  <input type="text" class="form-control form-control-lg" placeholder="Título do serviço"
-                    th:field="*{name}">
+                  <input type="text" id="name" th:field="*{name}" class="form-control form-control-lg"
+                    th:classappend="${#fields.hasErrors('name') ? 'is-invalid' : ''}">
+                  <div th:if="${#fields.hasErrors('name')}" class="invalid-feedback">
+                    <p class="pb-0 mb-0" th:each="err : ${#fields.errors('name')}" th:text="${err}"
+                      style="font-weight: bold;"></p>
+                  </div>
                 </div>
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
                   <label for="minimumPrice">Valor mínimo:</label>
                   <input type="number" class="form-control form-control-lg" th:field="*{minimumPrice}"
+                    th:classappend="${#fields.hasErrors('minimumPrice') ? 'is-invalid' : ''}"
                     aria-describedby="minimumPriceHelp">
-                  <small id="minimumPriceHelp" class="form-text text-muted">Defina o valor mínimo para o
-                    serviço.</small>
+                  <div th:if="${#fields.hasErrors('minimumPrice')}" class="invalid-feedback">
+                    <p class="pb-0 mb-0" th:each="err : ${#fields.errors('minimumPrice')}" th:text="${err}"
+                      style="font-weight: bold;"></p>
+                  </div>
                 </div>
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
                   <label for="quantityOfHours">Quantidade de horas:</label>

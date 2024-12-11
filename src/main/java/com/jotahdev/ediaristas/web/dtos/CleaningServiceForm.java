@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import com.jotahdev.ediaristas.core.enums.Icon;
 
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -19,11 +20,11 @@ import lombok.NoArgsConstructor;
 public class CleaningServiceForm {
 
   @NotNull
-  @Size(min = 3, max = 50)
+  @Size(min = 3, max = 50, message = "O título deve ter entre 3 e 50 caracteres.")
   private String name;
 
-  @NotNull
-  @PositiveOrZero
+  @NotNull(message = "O valor mínimo não pode ser vazio.")
+  @DecimalMin(value = "0.0", inclusive = true, message = "O valor mínimo deve ser maior ou igual a zero.")
   private BigDecimal minimumPrice;
 
   @NotNull
