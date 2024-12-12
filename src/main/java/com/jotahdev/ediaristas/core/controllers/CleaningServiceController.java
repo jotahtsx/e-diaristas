@@ -2,6 +2,7 @@ package com.jotahdev.ediaristas.core.controllers;
 
 import com.jotahdev.ediaristas.core.enums.Icon;
 import com.jotahdev.ediaristas.web.dtos.CleaningServiceForm;
+import com.jotahdev.ediaristas.web.dtos.FlashMessage;
 import com.jotahdev.ediaristas.web.services.CleaningWebService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/admin/servicos")
@@ -44,19 +46,22 @@ public class CleaningServiceController {
   }
 
   @PostMapping("/cadastrar")
-  public String create(@Valid @ModelAttribute("serviceForm") CleaningServiceForm serviceForm,
-      BindingResult result,
-      Model model,
-      HttpServletRequest request) {
-    if (result.hasErrors()) {
-      model.addAttribute("title", "Novo Serviço");
-      model.addAttribute("currentUrl", request.getRequestURI());
-      return "services/form"; // Retorna ao formulário com erros
-    }
-
-    cleaningWebService.create(serviceForm);
-
-    return "redirect:/admin/servicos"; // Redireciona para a página de serviços após sucesso
+  public String create(
+          @Valid @ModelAttribute("serviceForm") CleaningServiceForm serviceForm,
+          BindingResult result,
+          Model model,
+          HttpServletRequest request,
+          RedirectAttributes attrs) {
+      if (result.hasErrors()) {
+          model.addAttribute("title", "Novo Serviço");
+          model.addAttribute("currentUrl", request.getRequestURI());
+          return "services/form"; // Retorna ao formulário com erros
+      }
+  
+      cleaningWebService.create(serviceForm);
+      attrs.addFlashAttribute("alert", new FlashMessage("alert-success", "Serviço cadastrado com sucesso"));
+  
+      return "redirect:/admin/servicos"; // Redireciona para a página de serviços após sucesso
   }
 
   @GetMapping("/{id}/editar")
@@ -69,34 +74,40 @@ public class CleaningServiceController {
   }
 
   @PostMapping("/{id}/editar")
-  public String update(@PathVariable Long id,
-      @Valid @ModelAttribute("serviceForm") CleaningServiceForm serviceForm,
-      BindingResult bindingResult,
-      Model model,
-      HttpServletRequest request) {
-
-    if (bindingResult.hasErrors()) {
-      model.addAttribute("currentUrl", request.getRequestURI());
-      model.addAttribute("serviceForm", serviceForm);
-      model.addAttribute("title", "Editar Serviço");
-      model.addAttribute("buttonAction", "edit");
-
-      // Log de erros de validação para debug
-      bindingResult.getAllErrors().forEach(error -> {
-        System.out.println("Erro de validação: " + error.getDefaultMessage());
-      });
-
-      return "services/form"; // Retorna o formulário com os erros
-    }
-
-    // Atualiza o serviço utilizando o CleaningWebService
-    cleaningWebService.edit(serviceForm, id);
-
-    return "redirect:/admin/servicos"; // Redireciona para a página de serviços após sucesso
+  public String update(
+          @PathVariable Long id,
+          @Valid @ModelAttribute("serviceForm") CleaningServiceForm serviceForm,
+          BindingResult bindingResult,
+          Model model,
+          HttpServletRequest request,
+          RedirectAttributes attrs) {
+  
+      if (bindingResult.hasErrors()) {
+          model.addAttribute("currentUrl", request.getRequestURI());
+          model.addAttribute("serviceForm", serviceForm);
+          model.addAttribute("title", "Editar Serviço");
+          model.addAttribute("buttonAction", "edit");
+  
+          // Log de erros de validação para debug
+          bindingResult.getAllErrors().forEach(error -> {
+              System.out.println("Erro de validação: " + error.getDefaultMessage());
+          });
+  
+          return "services/form"; // Retorna o formulário com os erros
+      }
+  
+      // Atualiza o serviço utilizando o CleaningWebService
+      cleaningWebService.edit(serviceForm, id);
+  
+      // Adiciona uma mensagem de sucesso no Flash Attributes
+      attrs.addFlashAttribute("alert", new FlashMessage("alert-success", "Serviço atualizado com sucesso!"));
+  
+      return "redirect:/admin/servicos"; // Redireciona para a página de serviços após sucesso
   }
 
   @GetMapping("/{id}/excluir")
-  public String delete(@PathVariable Long id) {
+  public String delete(@PathVariable Long id, RedirectAttributes attrs) {
+    attrs.addFlashAttribute("alert", new FlashMessage("alert-success", "Serviço deletado com sucesso"));
     cleaningWebService.deleteById(id);
     return "redirect:/admin/servicos"; // Redireciona após exclusão
   }

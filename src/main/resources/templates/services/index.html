@@ -12,10 +12,17 @@
     <div class="page-wrap">
       <th:block th:replace="fragments/sidebar:: sidebar"></th:block>
       <div class="main-content">
+        <div th:if="${alert}" class="alert alert-dismissible fade show" th:classAppend=" ' ' + ${alert.classCss}"
+          role="alert">
+          <span th:text="${alert.message}"></span>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <i class="ik ik-x"></i>
+          </button>
+        </div>
         <div class="card">
-          <div class="card-header d-flex" style="display: flex; justify-content: center; justify-content: space-between;">
+          <div class="card-header d-flex"
+            style="display: flex; justify-content: center; justify-content: space-between;">
             <h3>Serviços</h3>
-            <a href="">aaa</a>
           </div>
           <div class="card-body">
             <table id="serviceTable" class="table">
@@ -36,7 +43,7 @@
                     <div class="table-actions">
                       <a th:href="@{/admin/servicos/{id}/editar(id=${service.id})}"><i class="ik ik-edit-2"></i></a>
                       <a th:href="@{/admin/servicos/{id}/excluir(id=${service.id})}"
-                      onclick="return confirm('Tem certeza de que deseja excluir este serviço? Esta ação é irreversível e os dados não poderão ser recuperados.')">
+                        onclick="return confirm('Tem certeza de que deseja excluir este serviço? Esta ação é irreversível e os dados não poderão ser recuperados.')">
                         <i class="ik ik-trash-2"></i>
                       </a>
                     </div>
