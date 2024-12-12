@@ -17,11 +17,11 @@
         <div class="nav-item has-sub" th:classappend="${(currentUrl != null and currentUrl.startsWith('/admin/servicos')) ? 'open active' : ''}">
           <a href="#"><i class="ik ik-package"></i><span>Serviços</span></a>
           <div class="submenu-content">
-            <a href="/admin/servicos" class="menu-item"
+            <a th:href="@{/admin/servicos}" class="menu-item"
               th:classappend="${currentUrl == '/admin/servicos' || currentUrl == '/admin/servicos/' ? 'active' : ''}">
               Ver todos
             </a>
-            <a href="/admin/servicos/cadastrar" class="menu-item"
+            <a th:href="@{/admin/servicos/cadastrar}" class="menu-item"
               th:classappend="${currentUrl == '/admin/servicos/cadastrar' || currentUrl == '/admin/servicos/cadastrar/' ? 'active' : ''}">
               Novo Serviço
             </a>

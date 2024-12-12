@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
                   <label for="minimumPrice">Valor mínimo:</label>
-                  <input type="number" class="form-control form-control-lg" th:field="*{minimumPrice}"
+                  <input type="text" class="form-control form-control-lg money" th:field="*{minimumPrice}"
                     th:classappend="${#fields.hasErrors('minimumPrice') ? 'is-invalid' : ''}"
                     aria-describedby="minimumPriceHelp">
                   <div th:if="${#fields.hasErrors('minimumPrice')}" class="invalid-feedback">
@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
                   <label for="commissionPercentage">Porcentagem por comissão:</label>
-                  <input type="number" class="form-control form-control-lg" th:field="*{commissionPercentage}"
+                  <input type="text" class="form-control form-control-lg money" th:field="*{commissionPercentage}"
                     th:classappend="${#fields.hasErrors('commissionPercentage') ? 'is-invalid' : ''}"
                     aria-describedby="commissionPercentageHelp">
                   <div th:if="${#fields.hasErrors('commissionPercentage')}" class="invalid-feedback">
@@ -69,7 +69,7 @@
                 </div>
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
                   <label for="roomPrice">Valor por quarto:</label>
-                  <input type="number" class="form-control form-control-lg" th:field="*{roomPrice}" 
+                  <input type="text" class="form-control form-control-lg money" th:field="*{roomPrice}" 
                          th:classappend="${#fields.hasErrors('roomPrice') ? 'is-invalid' : ''}">
                   <div th:if="${#fields.hasErrors('roomPrice')}" class="invalid-feedback">
                     <p class="pb-0 mb-0 font-weight-bold" th:each="err : ${#fields.errors('roomPrice')}" th:text="${err}"></p>
@@ -85,7 +85,7 @@
                 </div>
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
                   <label for="livingAreaPrice">Valor por sala:</label>
-                  <input type="number" class="form-control form-control-lg" th:field="*{livingAreaPrice}"
+                  <input type="text" class="form-control form-control-lg money" th:field="*{livingAreaPrice}"
                          th:classappend="${#fields.hasErrors('livingAreaPrice') ? 'is-invalid' : ''}">
                   <div th:if="${#fields.hasErrors('livingAreaPrice')}" class="invalid-feedback">
                     <p class="pb-0 mb-0 font-weight-bold" th:each="err : ${#fields.errors('livingAreaPrice')}" th:text="${err}"></p>
@@ -103,7 +103,7 @@
                 </div>
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
                   <label for="bathroomPrice">Valor do banheiro:</label>
-                  <input type="number" class="form-control form-control-lg" th:field="*{bathroomPrice}"
+                  <input type="text" class="form-control form-control-lg money" th:field="*{bathroomPrice}"
                          th:classappend="${#fields.hasErrors('bathroomPrice') ? 'is-invalid' : ''}">
                   <div th:if="${#fields.hasErrors('bathroomPrice')}" class="invalid-feedback">
                     <p class="pb-0 mb-0 font-weight-bold" th:each="err : ${#fields.errors('bathroomPrice')}" th:text="${err}"></p>
@@ -119,7 +119,7 @@
                 </div>
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
                   <label for="kitchenPrice">Valor da cozinha:</label>
-                  <input type="number" class="form-control form-control-lg" th:field="*{kitchenPrice}"
+                  <input type="text" class="form-control form-control-lg money" th:field="*{kitchenPrice}"
                          th:classappend="${#fields.hasErrors('kitchenPrice') ? 'is-invalid' : ''}">
                   <div th:if="${#fields.hasErrors('kitchenPrice')}" class="invalid-feedback">
                     <p class="pb-0 mb-0 font-weight-bold" th:each="err : ${#fields.errors('kitchenPrice')}" th:text="${err}"></p>
@@ -138,7 +138,7 @@
                 
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
                   <label for="yardPrice">Valor do quintal:</label>
-                  <input type="number" class="form-control form-control-lg" th:field="*{yardPrice}"
+                  <input type="text" class="form-control form-control-lg money" th:field="*{yardPrice}"
                          th:classappend="${#fields.hasErrors('yardPrice') ? 'is-invalid' : ''}">
                   <div th:if="${#fields.hasErrors('yardPrice')}" class="invalid-feedback">
                     <p class="pb-0 mb-0 font-weight-bold" th:each="err : ${#fields.errors('yardPrice')}" th:text="${err}"></p>
@@ -154,7 +154,7 @@
                 </div>     
                 <div class="col-md-12 col-lg-3 col-sm-12 mb-20">
                   <label for="othersPrice">Valor (Outros):</label>
-                  <input type="number" class="form-control form-control-lg" th:field="*{othersPrice}"
+                  <input type="text" class="form-control form-control-lg money" th:field="*{othersPrice}"
                          th:classappend="${#fields.hasErrors('othersPrice') ? 'is-invalid' : ''}">
                   <div th:if="${#fields.hasErrors('othersPrice')}" class="invalid-feedback">
                     <p class="pb-0 mb-0 font-weight-bold" th:each="err : ${#fields.errors('othersPrice')}" th:text="${err}"></p>

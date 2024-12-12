@@ -2,6 +2,8 @@ package com.jotahdev.ediaristas.web.dtos;
 
 import java.math.BigDecimal;
 
+import org.springframework.format.annotation.NumberFormat;
+
 import com.jotahdev.ediaristas.core.enums.Icon;
 
 import jakarta.validation.constraints.DecimalMin;
@@ -25,6 +27,7 @@ public class CleaningServiceForm {
 
   @NotNull(message = "O valor mínimo não pode ser vazio.")
   @DecimalMin(value = "0.0", inclusive = true, message = "O valor mínimo deve ser maior ou igual a 0.")
+  @NumberFormat(pattern = "#,##0.00")
   private BigDecimal minimumPrice;
 
   @NotNull(message = "A quantidade de horas não pode ser vazia.")
@@ -34,6 +37,7 @@ public class CleaningServiceForm {
   @NotNull(message = "A porcentagem da comissão não pode ser vazia.")
   @PositiveOrZero(message = "A porcentagem da comissão deve ser maior ou igual a 0.")
   @Max(value = 100, message = "A porcentagem da comissão não pode ser maior que 100%.")
+  @NumberFormat(pattern = "#,##0.00")
   private BigDecimal commissionPercentage;
 
   @NotNull(message = "É preciso setar um valor de horas por quarto.")
@@ -42,6 +46,7 @@ public class CleaningServiceForm {
 
   @NotNull(message = "Informe o valor do quarto.")
   @PositiveOrZero(message = "O valor deve ser 0 ou mais.")
+  @NumberFormat(pattern = "#,##0.00")
   private BigDecimal roomPrice;
 
   @NotNull(message = "É preciso setar um valor de horas por sala.")
@@ -50,6 +55,7 @@ public class CleaningServiceForm {
 
   @NotNull(message = "Informe o valor da sala.")
   @PositiveOrZero(message = "O valor deve ser 0 ou mais.")
+  @NumberFormat(pattern = "#,##0.00")
   private BigDecimal livingAreaPrice;
 
   @NotNull(message = "É preciso setar um valor de horas por banheiro.")
@@ -58,6 +64,7 @@ public class CleaningServiceForm {
 
   @NotNull(message = "Informe o valor do banheiro.")
   @PositiveOrZero(message = "O valor deve ser 0 ou mais.")
+  @NumberFormat(pattern = "#,##0.00")
   private BigDecimal bathroomPrice;
 
   @NotNull(message = "É preciso setar um valor de horas por cozinha.")
@@ -66,6 +73,7 @@ public class CleaningServiceForm {
 
   @NotNull(message = "Informe o valor da cozinha.")
   @PositiveOrZero(message = "O valor deve ser 0 ou mais.")
+  @NumberFormat(pattern = "#,##0.00")
   private BigDecimal kitchenPrice;
 
   @NotNull(message = "É preciso setar um valor de horas por quintal.")
@@ -74,6 +82,7 @@ public class CleaningServiceForm {
 
   @NotNull(message = "Informe o valor do quintal.")
   @PositiveOrZero(message = "O valor deve ser 0 ou mais.")
+  @NumberFormat(pattern = "#,##0.00")
   private BigDecimal yardPrice;
 
   @NotNull(message = "Insira o número de horas para serviços adicionais.")
@@ -82,6 +91,7 @@ public class CleaningServiceForm {
 
   @NotNull(message = "Defina o valor dos serviços adicionais.")
   @PositiveOrZero(message = "O valor deve ser 0 ou mais.")
+  @NumberFormat(pattern = "#,##0.00")
   private BigDecimal othersPrice;
 
   @NotNull
