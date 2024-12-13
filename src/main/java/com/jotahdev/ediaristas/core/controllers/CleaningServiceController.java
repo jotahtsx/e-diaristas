@@ -32,7 +32,7 @@ public class CleaningServiceController {
     model.addAttribute("services", cleaningWebService.getAll());
     model.addAttribute("currentUrl", request.getRequestURI());
 
-    return "services/index";
+    return "admin/services/index";
   }
 
   @GetMapping(value = { "/cadastrar", "/cadastrar/" })
@@ -42,7 +42,7 @@ public class CleaningServiceController {
     model.addAttribute("buttonAction", "create");
     model.addAttribute("currentUrl", request.getRequestURI()); // Passando a URL atual para o modelo
 
-    return "services/form";
+    return "admin/services/form";
   }
 
   @PostMapping("/cadastrar")
@@ -55,7 +55,7 @@ public class CleaningServiceController {
       if (result.hasErrors()) {
           model.addAttribute("title", "Novo Serviço");
           model.addAttribute("currentUrl", request.getRequestURI());
-          return "services/form"; // Retorna ao formulário com erros
+          return "admin/services/form"; // Retorna ao formulário com erros
       }
   
       cleaningWebService.create(serviceForm);
@@ -70,7 +70,7 @@ public class CleaningServiceController {
     model.addAttribute("title", "Editar Serviço");
     model.addAttribute("buttonAction", "edit");
     model.addAttribute("currentUrl", request.getRequestURI());
-    return "services/form";
+    return "admin/services/form";
   }
 
   @PostMapping("/{id}/editar")
@@ -93,7 +93,7 @@ public class CleaningServiceController {
               System.out.println("Erro de validação: " + error.getDefaultMessage());
           });
   
-          return "services/form"; // Retorna o formulário com os erros
+          return "adimin/services/form"; // Retorna o formulário com os erros
       }
   
       // Atualiza o serviço usando o CleaningWebService

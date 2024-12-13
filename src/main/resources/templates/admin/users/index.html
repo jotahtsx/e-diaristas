@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<th:block th:replace="fragments/head :: head"></th:block>
+
+<body>
+  <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+  <div class="wrapper">
+    <th:block th:replace="fragments/header:: header"></th:block>
+    <div class="page-wrap">
+      <th:block th:replace="fragments/sidebar:: sidebar"></th:block>
+      <div class="main-content">
+        <div th:if="${alert}" class="alert alert-dismissible fade show" th:classAppend=" ' ' + ${alert.classCss}"
+          role="alert">
+          <span th:text="${alert.message}"></span>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <i class="ik ik-x"></i>
+          </button>
+        </div>
+        <div class="card">
+          <div class="card-header d-flex"
+            style="display: flex; justify-content: center; justify-content: space-between;">
+            <h3>Usuários</h3>
+          </div>
+          <div class="card-body">
+            <table id="serviceTable" class="table">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Nome completo</th>
+                  <th>Email</th>
+                  <th class="nosort">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="user : ${users}">
+                  <td th:text="${user.id}"></td>
+                  <td th:text="${user.fullName}"></td>
+                  <td th:text="${user.email}"></td>
+                  <td>
+                    <div class="table-actions">
+                      <a th:href="@{/admin/usuarios/{id}/editar(id=${user.id})}"><i class="ik ik-edit-2"></i></a>
+                      <a th:href="@{/admin/usuarios/{id}/excluir(id=${user.id})}"
+                        onclick="return confirm('Tem certeza de que deseja excluir este usuário? Esta ação é irreversível e os dados não poderão ser recuperados.')">
+                        <i class="ik ik-trash-2"></i>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <th:block th:replace="fragments/footer:: footer"></th:block>
+    </div>
+  </div>
+  <div>
+    <th:block th:replace="fragments/scripts :: scripts"></th:block>
+  </div>
+</body>
+
+</html>

@@ -20,10 +20,10 @@ public class UserController {
   @GetMapping(value = { "/", "" })
   public String listAll(Model model, HttpServletRequest request) {
     model.addAttribute("title", "Usuários");
-    model.addAttribute("services", UserWebService.getAll());
+    model.addAttribute("users", UserWebService.getAll());
     model.addAttribute("currentUrl", request.getRequestURI());
 
-    return "users/index";
+    return "admin/users/index";
   }
 
 }
