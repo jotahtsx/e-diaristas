@@ -17,7 +17,7 @@ Projeto desenvolvido e atualizado durante a imersão Multi Stack da Treina Web u
 
 ## Requisitos
 
-- Java 17+ (Atualente utilizo o openjdk 21 2023-09-19)
+- Java 17+ (Atualmente utilizo o openjdk 21 2023-09-19)
 - Maven
 
 ## Como testar o projeto na sua máquina
