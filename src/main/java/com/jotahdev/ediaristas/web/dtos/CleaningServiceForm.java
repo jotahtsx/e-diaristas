@@ -59,7 +59,7 @@ public class CleaningServiceForm {
   private BigDecimal livingAreaPrice;
 
   @NotNull(message = "É preciso setar um valor de horas por banheiro.")
-  @PositiveOrZero(message = "A quantidade de horas por sala deve ser maior ou igual a 0.")
+  @PositiveOrZero(message = "A quantidade de horas por banheiro deve ser maior ou igual a 0.")
   private BigDecimal bathroomHours;
 
   @NotNull(message = "Informe o valor do banheiro.")
@@ -94,10 +94,10 @@ public class CleaningServiceForm {
   @NumberFormat(pattern = "#,##0.00")
   private BigDecimal othersPrice;
 
-  @NotNull
+  @NotNull(message = "O ícone é obrigatório.")
   private Icon icon;
 
-  @NotNull
-  @Positive
+  @NotNull(message = "A posição deve ser positiva.")
+  @Positive(message = "A posição deve ser um número positivo.")
   private Integer position;
 }

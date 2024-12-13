@@ -29,11 +29,13 @@ public class WebCleaningServiceMapper {
     model.setOthersPrice(form.getOthersPrice());
     model.setIcon(form.getIcon());
     model.setPosition(form.getPosition());
-    model.setRoomHours(form.getRoomHours() != null ? form.getRoomHours().intValue() : null);
+    
+    // Alterado para Integer, permitindo valores nulos
+    model.setRoomHours(form.getRoomHours() != null ? form.getRoomHours().intValue() : null);  
     model.setLivingAreaHours(form.getLivingAreaHours() != null ? form.getLivingAreaHours().intValue() : null);
-    model.setBathroomHours(form.getBathroomHours() != null ? form.getBathroomHours().intValue() : null);
-    model.setKitchenHours(form.getKitchenHours() != null ? form.getKitchenHours().intValue() : null);
-    model.setYardHours(form.getYardHours() != null ? form.getYardHours().intValue() : null);
+    model.setBathroomHours(form.getBathroomHours() != null ? form.getBathroomHours().intValue() : null);  
+    model.setKitchenHours(form.getKitchenHours() != null ? form.getKitchenHours().intValue() : null);  
+    model.setYardHours(form.getYardHours() != null ? form.getYardHours().intValue() : null);  
     model.setOthersHours(form.getOthersHours() != null ? form.getOthersHours().intValue() : null);
 
     return model;
@@ -50,6 +52,8 @@ public class WebCleaningServiceMapper {
     form.setMinimumPrice(model.getMinimumPrice());
     form.setQuantityOfHours(model.getQuantityOfHours());
     form.setCommissionPercentage(model.getCommissionPercentage());
+    
+    // Conversão para BigDecimal para permitir valores nulos
     form.setRoomHours(model.getRoomHours() != null ? BigDecimal.valueOf(model.getRoomHours()) : null);
     form.setRoomPrice(model.getRoomPrice());
     form.setLivingAreaHours(model.getLivingAreaHours() != null ? BigDecimal.valueOf(model.getLivingAreaHours()) : null);
@@ -67,5 +71,4 @@ public class WebCleaningServiceMapper {
 
     return form;
   }
-
 }
